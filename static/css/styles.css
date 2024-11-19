@@ -1,0 +1,247 @@
+/* Blurred Background */
+body {
+    background: url('../images/Ocean Background.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+}
+
+.hero-text {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer .list-inline-item a {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.footer .list-inline-item a:hover {
+    color: #0d6efd;
+}
+
+/* Background Blur Effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    z-index: -1;
+}
+
+/* Hero Section Styling */
+.hero {
+    position: relative;
+    height: 90vh;
+    background: url('{{ url_for("static", filename="images/hero.jpg") }}') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+}
+
+.hero-text {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.hero-text p {
+    font-size: 1.25rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+.btn-outline-light {
+    color: #fff;
+    border-color: #fff;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* About Section */
+.about {
+    background: #f8f9fa;
+}
+
+.mission {
+    background: #e9ecef;
+}
+
+.cta {
+    background: #007bff;
+}
+
+/* Impact Section */
+.impact i {
+    color: #6c757d;
+}
+
+.impact h4 {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.impact p {
+    color: #6c757d;
+}
+
+.btn-light {
+    color: #000;
+    background-color: #f8f9fa;
+}
+
+
+
+/* Marine Animals Section Styling */
+.marine-animals h2 {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    color: #007bff;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+.footer {
+    background-color: #0a2a4a; /* Dark blue shade for theme consistency */
+    color: #b0c4de; /* Light text for contrast */
+}
+
+.footer a {
+    color: #b0c4de;
+    transition: color 0.2s;
+}
+
+.footer a:hover {
+    color: #87cefa; /* Lighter shade on hover */
+}
+
+.footer .form-control {
+    color: #b0c4de;
+    border-color: #87cefa;
+}
+
+.footer .btn-primary {
+    background-color: #1e90ff;
+    border-color: #1e90ff;
+}
+
+.footer .btn-outline-light:hover {
+    background-color: #1e90ff;
+    color: #fff;
+}
+
+
+/* Gradient background for the navbar */
+.navbar {
+    background: linear-gradient(90deg, rgba(0, 36, 63, 1) 0%, rgba(0, 119, 182, 1) 100%);
+}
+
+/* Navbar link styles */
+.navbar-nav .nav-link {
+    font-weight: 500; /* Make the text bold */
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Add slight letter spacing for a clean look */
+    transition: color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f1f1f1; /* Lighter color on hover */
+    transform: scale(1.1); /* Slight scale effect for hover */
+}
+
+/* Dropdown menu styling */
+.navbar-nav .dropdown-menu {
+    background-color: #1e3c60; /* Dark background for the dropdown */
+    border-radius: 5px;
+}
+
+.navbar-nav .dropdown-item {
+    color: #f1f1f1;
+    padding: 10px 20px;
+}
+
+.navbar-nav .dropdown-item:hover {
+    background-color: #3a5d8e; /* Light hover effect for dropdown */
+}
+
+/* Navbar brand logo hover effect */
+.navbar-brand img {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand img:hover {
+    transform: scale(1.1); /* Slight zoom effect on logo hover */
+}
+#quiz-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#choices button {
+    width: 100%;
+    max-width: 300px;
+}
