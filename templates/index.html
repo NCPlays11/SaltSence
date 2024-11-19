@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block title %} Your Partner in Protecting Marine Ecosystems {% endblock %}
+{% block content %}
+<!-- Hero Section -->
+<div class="hero position-relative" style="background: url('{{ url_for("static", filename="images/hero-1.jpeg") }}');">
+    <div class="hero-overlay"></div>
+    <div class="hero-text text-center">
+        <h1 class="display-4 fw-bold text-white">SaltSense</h1>
+        <p class="lead text-light mb-4">Your Partner in Protecting Marine Ecosystems from the Dangers of Desalination</p>
+        <a href="{{url_for('about')}}" class="btn btn-primary btn-lg mx-2">Learn More</a>
+        <a href="#" class="btn btn-outline-light btn-lg mx-2">Get Involved</a>
+    </div>
+</div>
+
+<!-- About Section -->
+<section class="about py-5"style="background: none;">
+    <div class="container">
+        <div class="card bg-light shadow-lg" style="background: rgba(255, 255, 255, 0.8);">
+            <div class="card-body text-center">
+                <h2 class="mb-4">Why We Care</h2>
+                <p class="lead">
+                    Desalination may provide fresh water, but its consequences are often overlooked. At SaltSense, we believe in
+                    raising awareness about the hidden dangers of desalination, including the damage to marine life, increased
+                    salinity in water bodies, and the release of harmful chemicals into the environment.
+                </p>
+                <a href="{{url_for('learn')}}" class="btn btn-secondary">Discover More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Mission Section -->
+<section class="mission py-5" style="background: none;">
+    <div class="container">
+        <div class="card bg-light shadow-lg" style="background: rgba(255, 255, 255, 0.8);">
+            <div class="card-body text-center">
+                <h2 class="mb-4">Our Mission</h2>
+                <p class="lead">
+                    Our mission is to educate communities, influence policy, and promote sustainable water solutions that
+                    protect our oceans and coastal ecosystems. We strive to foster a deeper understanding of the risks
+                    associated with desalination and advocate for innovative alternatives.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Marine Animals Section -->
+<section class="marine-animals py-5">
+    <div class="container">
+        <h2 class="text-center mb-5" style="color: cyan;">Marine Life We Care About</h2>
+        <div class="row">
+            <!-- Sea Turtle Card -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg" style="background: rgba(255, 255, 255, 0.8);">
+                    <img src="{{ url_for('static', filename='images/16eaa0e9e69dc17944d3f8c121df3c66.jpeg') }}" class="card-img-top" alt="Sea Turtle">
+                    <div class="card-body">
+                        <h5 class="card-title">Sea Turtle</h5>
+                        <p class="card-text">Sea turtles are threatened by pollution and habitat changes caused by desalination.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coral Reef Card -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg" style="background: rgba(255, 255, 255, 0.8);">
+                    <img src="{{ url_for('static', filename='images/8be6e184b73c35e304ec0f8ce3e39f7f79ebb8cb79a0349ca13e093087eb5edea5517e46ffab7f30155374c9251e28d0dd08a899f7895be27ab695_1280.jpg') }}" class="card-img-top" alt="Coral Reef">
+                    <div class="card-body">
+                        <h5 class="card-title">Coral Reef</h5>
+                        <p class="card-text">Coral reefs are highly sensitive to increased salinity and pollutants from desalination.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schooling Fish Card -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg" style="background: rgba(255, 255, 255, 0.8);">
+                    <img src="{{ url_for('static', filename='images/cd5ea15c3ccb9833868cb0e78db706e8.jpeg') }}" class="card-img-top" alt="School of Fish">
+                    <div class="card-body">
+                        <h5 class="card-title">Schooling Fish</h5>
+                        <p class="card-text">Schooling fish are essential for the marine food web, affected by habitat disruptions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta py-5 text-center text-white" style="background: rgba(0, 0, 0, 0.5);">
+    <div class="container">
+        <div class="card bg-dark text-white shadow-lg">
+            <div class="card-body">
+                <h2>Join Us in Making a Difference</h2>
+                <p class="mb-4">Support our efforts to spread awareness and drive positive change for marine environments.</p>
+                <a href="#" class="btn btn-light btn-lg">Join the Movement</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Impact Section -->
+<section class="impact py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card bg-light shadow-lg" style="background: rgba(255, 255, 255, 0.8);">
+                    <div class="card-body text-center">
+                        <i class="fas fa-water fa-3x text-primary mb-3"></i>
+                        <h4>Research & Advocacy</h4>
+                        <p>We collaborate with scientists to research desalination’s effects and advocate for better regulations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light shadow-lg" style="background: rgba(255, 255, 255, 0.8);">
+                    <div class="card-body text-center">
+                        <i class="fas fa-leaf fa-3x text-success mb-3"></i>
+                        <h4>Community Education</h4>
+                        <p>We plan to educate communities about the environmental risks of desalination through workshops and campaigns.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light shadow-lg" style="background: rgba(255, 255, 255, 0.8);">
+                    <div class="card-body text-center">
+                        <i class="fas fa-globe fa-3x text-info mb-3"></i>
+                        <h4>Global Collaboration</h4>
+                        <p>We hope to partner with international organizations to promote sustainable water solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block title %}Learn{% endblock %}
+
+{% block content %}
+<!-- Background Image and Overlay -->
+<div class="bg-image text-white" style="background-image: url('/static/images/desalination-bg.jpg'); background-size: cover; padding: 20px 0;">
+    <div class="container my-4">
+        <h1 class="text-center mb-4">Learn About Desalination</h1>
+        <!-- Chart -->
+        <div class="container bg-light" style="margin-bottom: 60px; border-radius: 5px;">
+            <canvas id="desalinationChart"></canvas>
+        </div>
+        <script src="/static/js/charts.js"></script>
+        <!-- Info Cards Section -->
+        <div class="row">
+            <!-- Card 1: Introduction to Desalination -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-water"></i> What is Desalination?</h5>
+                        <p class="card-text">Desalination is the process of removing salt and impurities from seawater to create fresh, drinkable water.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: History of Desalination -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-history"></i> History of Desalination</h5>
+                        <p class="card-text">Desalination has been practiced for centuries, with early methods using evaporation to produce fresh water.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Benefits of Desalination -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-thumbs-up"></i> Benefits of Desalination</h5>
+                        <p class="card-text">Provides a reliable water source in drought-prone areas, supporting agriculture, industry, and urban needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accordion Section for Additional Information -->
+        <div class="accordion my-4" id="desalinationAccordion">
+            <!-- Accordion Item 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                        <i class="fas fa-info-circle"></i> How Does Desalination Work?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                        Desalination involves processes like reverse osmosis and distillation to separate salt and minerals from seawater, producing freshwater.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Item 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                        <i class="fas fa-balance-scale"></i> Pros and Cons of Desalination
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <strong>Pros:</strong> Provides a steady source of water, helps alleviate water scarcity.<br>
+                        <strong>Cons:</strong> High energy consumption, potential harm to marine ecosystems from brine discharge.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Item 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                        <i class="fas fa-lightbulb"></i> Future Trends in Desalination
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        Researchers are exploring renewable energy sources like solar power to reduce environmental impacts and make desalination more sustainable.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Infographic-Style Progress Bars Section -->
+        <div class="my-4">
+            <h3 class="text-center">Desalination Statistics</h3>
+            <div class="mb-3">
+                <h5>Global Freshwater Supply from Desalination</h5>
+                <div class="progress">
+                    <div class="progress-bar bg-info" style="width: 20%;">20%</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <h5>Energy Efficiency Improvement (Last Decade)</h5>
+                <div class="progress">
+                    <div class="progress-bar bg-success" style="width: 35%;">35%</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <h5>Brine Management Improvement</h5>
+                <div class="progress">
+                    <div class="progress-bar bg-warning" style="width: 50%;">50%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Info Cards Section -->
+        <div class="row">
+            <!-- Card 4: Innovative Solutions -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Innovative Solutions</h5>
+                        <p class="card-text">Research is focusing on using renewable energy sources, like solar power, to make desalination more sustainable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Desalination Around the World -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Desalination Around the World</h5>
+                        <p class="card-text">Countries like Saudi Arabia and Israel lead in desalination, using it to meet most of their freshwater needs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: The Future of Desalination -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">The Future of Desalination</h5>
+                        <p class="card-text">Technological advances are making desalination more efficient, offering potential solutions to global water shortages.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call-to-Action Section -->
+        <div class="text-center my-5">
+            <h4>Want to Dive Deeper Into Water Technologies?</h4>
+            <p>Join our newsletter to stay updated on the latest innovations in desalination and water purification.</p>
+            <a href="/subscribe" class="btn btn-primary btn-lg"><i class="fas fa-envelope"></i> Subscribe Now</a>
+        </div>
+
+        <!-- Quiz Button -->
+        <div class="text-center">
+            <a href="/quiz" class="btn btn-primary btn-lg"><i class="fas fa-question-circle"></i> Start Quiz</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

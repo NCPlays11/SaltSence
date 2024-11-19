@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Quiz On Desalinalization {% endblock %}
+{% block content %}
+
+    <div class="container mt-5">
+        <div id="quiz-container" class="text-center">
+            <h2 id="question">Question goes here</h2>
+            <div id="choices" class="d-flex flex-column align-items-center"></div>
+            <button id="next-button" class="btn btn-success mt-3" disabled>Next</button>
+        </div>
+        <div id="result-container" class="text-center mt-5" style="display: none;">
+            <h2 id="result-message"></h2>
+            <p id="score"></p>
+            <a href="/" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
+    <script src="/static/js/quiz.js"></script>
+    {% endblock %}
