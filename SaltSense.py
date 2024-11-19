@@ -24,6 +24,9 @@ def quiz():
 def learn():
     return render_template('learn.html')
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route('/data')
 def get_data():
