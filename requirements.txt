@@ -6,6 +6,7 @@ colorama==0.4.6
 distlib==0.3.8
 filelock==3.16.0
 Flask==3.0.3
+gunicorn
 Jinja2==3.1.4
 MarkupSafe==2.1.5
 mypy-extensions==1.0.0
