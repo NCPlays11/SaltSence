@@ -16,25 +16,28 @@ def about():
 def faq():
     return render_template("FAQ.html", name="FAQ", title="FAQ")
 
-@app.route('/quiz')
+@app.route("/quiz")
 def quiz():
-    return render_template('quiz.html')
+    return render_template("quiz.html")
 
-@app.route('/learn')
+@app.route("/learn")
 def learn():
-    return render_template('learn.html')
+    return render_template("learn.html")
 
-@app.route('/contact')
+@app.route("/contact")
 def contact():
-    return render_template('contact.html')
+    return render_template("contact.html")
 
-@app.route('/data')
+@app.route("/data")
 def get_data():
-    file_path = os.path.join(app.root_path, 'static', 'desalination_data.csv')
+    file_path = os.path.join(app.root_path, "static", "desalination_data.csv")
     df = pd.read_csv(file_path)
-    data = df.to_dict(orient='records')
+    data = df.to_dict(orient="records")
     return jsonify(data)
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template("404.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
