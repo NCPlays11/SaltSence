@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
-            padding: 35vh;
+            padding: 27vh;
             height: 100vh;
             margin: 0;
             display: flex;
@@ -22,7 +22,7 @@
 
         .hero-text {
             text-align: center;
-            padding: 80px 160px;
+            padding: 80px 130px;
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 5px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
@@ -37,11 +37,11 @@
 <body>
     <div class="hero-text text-center">
         <h1 class="display-4 fw-bold text-white">Oops!</h1>
-        <p class="lead text-light mb-4">This page doesn't exist!</p>
-        <a href="{{url_for('about')}}" class="btn btn-primary btn-lg mx-2">Return Home</a>
+        <p class="lead text-light mb-4">You dove a little too deep.</p>
+        <a href="{{url_for('about')}}" class="btn btn-primary btn-lg mx-2" style="width: 30vh;">Return Home</a>
     </div>
     <div class="image">
-        <img src="../static/images/404.png" width="300" height="500">
+        <img src="../static/images/dead-fish.png" width="600">
     </div>
 </body>
 </html>
