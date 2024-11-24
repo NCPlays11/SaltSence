@@ -43,7 +43,7 @@ def get_data():
 # Subscribe
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
-    email = request.form.get('email')  
+    email = request.form.get('email')
     if email:
         # Define the file path within the 'static' directory
         file_path = os.path.join(app.root_path, "static", "subscribers.csv")
@@ -58,6 +58,10 @@ def subscribe():
         flash('Please provide a valid email address.', 'danger')
     
     return redirect(url_for('home'))
+
+@app.route("/join")
+def join():
+    return render_template("join.html")
 
 
 @app.errorhandler(404)
