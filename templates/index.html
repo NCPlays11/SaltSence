@@ -4,13 +4,13 @@
 <!-- Hero Section -->
 <div class="hero position-relative" style="background: url('{{ url_for("static", filename="images/hero-1.jpeg") }}');">
     <div class="hero-overlay"></div>
-        <div class="hero-text text-center">
-            <h1 class="display-4 fw-bold text-white">SaltSense</h1>
-            <p class="lead text-light mb-4">Your Partner in Protecting Marine Ecosystems from the Dangers of Desalination</p>
-            <a href="{{url_for('about')}}" class="btn btn-primary btn-lg mx-2">Learn More</a>
-            <a href="{{url_for('learn')}}" class="btn btn-outline-light btn-lg mx-2">Get Involved</a>
-        </div>
+    <div class="hero-text text-center">
+        <h1 class="display-4 fw-bold text-white">SaltSense</h1>
+        <p class="lead text-light mb-4">Your Partner in Protecting Marine Ecosystems from the Dangers of Desalination</p>
+        <a href="{{url_for('about')}}" class="btn btn-primary btn-lg mx-2">Learn More</a>
+        <a href="{{url_for('contact')}}" class="btn btn-outline-light btn-lg mx-2">Get Involved</a>
     </div>
+</div>
 
 <!-- About Section -->
 <section class="about py-5"style="background: none;">
@@ -93,7 +93,7 @@
             <div class="card-body">
                 <h2>Join Us in Making a Difference</h2>
                 <p class="mb-4">Support our efforts to spread awareness and drive positive change for marine environments.</p>
-                <a href="{{ url_for('join') }}" class="btn btn-light btn-lg">Join the Movement</a>
+                <a href="{{url_for('contact')}}" class="btn btn-light btn-lg">Join the Movement</a>
             </div>
         </div>
     </div>
