@@ -29,8 +29,40 @@ def quiz():
 def learn():
     return render_template("learn.html")
 
-@app.route("/contact")
+
+
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        CSV_FILE = os.path.join(app.root_path, "static", "contact.csv")
+        # Get the form data
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+        
+        # Ensure that the email and message are provided
+        if name and email and message:
+            # Ensure the CSV file exists and has the appropriate headers
+            if not os.path.exists(CSV_FILE):
+                with open(CSV_FILE, mode='w', newline='', encoding='utf-8') as file:
+                    writer = csv.writer(file)
+                    writer.writerow(["Full Name", "Email Address", "Message"])  # Header row
+
+            # Save the form data to the CSV file
+            with open(CSV_FILE, mode='a', newline='', encoding='utf-8') as file:
+                writer = csv.writer(file)
+                writer.writerow([name, email, message])  # Append the form data
+
+            # Flash a success message
+            flash("Your message has been sent successfully!", "success")
+        else:
+            # Flash an error message if any field is missing
+            flash("Please fill out all the fields.", "danger")
+        
+        # Redirect back to the contact page
+        return redirect(url_for("contact"))
+    
+    # Render the contact page for GET requests
     return render_template("contact.html")
 
 @app.route("/data")
@@ -43,7 +75,7 @@ def get_data():
 # Subscribe
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
-    email = request.form.get('email')
+    email = request.form.get('email')  
     if email:
         # Define the file path within the 'static' directory
         file_path = os.path.join(app.root_path, "static", "subscribers.csv")
@@ -58,10 +90,6 @@ def subscribe():
         flash('Please provide a valid email address.', 'danger')
     
     return redirect(url_for('home'))
-
-@app.route("/join")
-def join():
-    return render_template("join.html")
 
 
 @app.errorhandler(404)
