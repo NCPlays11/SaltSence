@@ -8,8 +8,15 @@
     <div class="container my-4">
         <h1 class="text-center mb-4">Learn About Desalination</h1>
         <!-- Chart -->
-        <div class="container bg-light" style="margin-bottom: 60px; border-radius: 5px;">
-            <canvas id="desalinationChart"></canvas>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h1 style="color: black;">Select a Region</h1>
+                    {% for region in regions %}
+                        <button style="color: black;"><a href="{{ url_for('region_charts', region_name=region) }}">{{ region }}</a></button>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
         <script src="/static/js/charts.js"></script>
         <!-- Info Cards Section -->

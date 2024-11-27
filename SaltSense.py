@@ -8,6 +8,8 @@ app = Flask(__name__)
 # app.secret_key = os.urandom(64)
 
 app.secret_key = 'FTYUJLGTCKJHBVijufewnjv832ur5456e4w58hvb4o5'
+file_path = os.path.join(app.root_path, "static", "desalination_data.csv")
+df = pd.read_csv(file_path)
 
 @app.route("/")
 def home():
@@ -27,7 +29,7 @@ def quiz():
 
 @app.route("/learn")
 def learn():
-    return render_template("learn.html")
+    return render_template("learn.html", regions=["Middle East", "North America", "Asia Pacific", "Europe", "Africa"])
 
 @app.route("/contact")
 def contact():
@@ -35,10 +37,13 @@ def contact():
 
 @app.route("/data")
 def get_data():
-    file_path = os.path.join(app.root_path, "static", "desalination_data.csv")
-    df = pd.read_csv(file_path)
     data = df.to_dict(orient="records")
     return jsonify(data)
+
+@app.route('/region/<region_name>')
+def region_charts(region_name):
+    region_data = df[df['Region'] == region_name].to_dict(orient='records')
+    return render_template('region_charts.html', region=region_name, data=region_data)
 
 # Subscribe
 @app.route('/subscribe', methods=['POST'])

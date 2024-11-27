@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts for {{ region }}</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Charts for {{ region }}</h1>
+    <div id="chartsContainer">
+        {% for variable in ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"] %}
+            <canvas id="{{ variable }}" width="800" height="400"></canvas>
+        {% endfor %}
+    </div>
+
+    <script>
+        const data = {{ data|tojson|safe }};
+    
+            const variables = ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"];
+            const labels = data.map(item => item.Year);
+    
+            variables.forEach(variable => {
+                const ctx = document.getElementById(variable).getContext('2d');
+                const chartData = data.map(item => item[variable]);
+    
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: variable.replace(/_/g, ' '),
+                                data: chartData,
+                                borderColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 1)`,
+                                backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                fill: false,
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: variable.replace(/_/g, ' ')
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Year'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: variable.replace(/_/g, ' ')
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+    </script>    
+</body>
+</html>
