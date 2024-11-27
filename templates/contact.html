@@ -1,14 +1,69 @@
 {% extends "base.html" %}
+
 {% block title %}
-Contact Us
+Join the Movement & Contact Us
 {% endblock %}
+
 {% block content %}
-<section class="py-5">
+<section class="py-5" id="join">
+    <div class="container">
+        <!-- Section Heading for Join the Movement -->
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-dark">Join the Movement</h1>
+            <p class="lead text-muted" style="color: black; font-size: 22px; font-weight: 600;">
+                Creating better opportunities for desalination by sharing ideas across the globe.
+            </p>
+        </div>
+
+        <!-- Idea Submission Form -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Submit Your Idea</h5>
+                        <form method="POST" action="{{ url_for('contact') }}">
+                            <!-- Full Name -->
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+                            </div>
+                            <!-- Email Address -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
+                            </div>
+                            <!-- Idea Description -->
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Your Idea</label>
+                                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Share your ideas about combating desalination" required></textarea>
+                            </div>
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn w-100 text-white" style="background: linear-gradient(90deg, #005c97, #363795); border: none; border-radius: 8px; transition: all 0.3s ease;">
+                                Submit Idea
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Message for Idea Submission -->
+        {% if message %}
+        <div class="alert alert-success mt-4">
+            <strong>Success!</strong> Your idea has been submitted. Thank you for your contribution to combating desalination.
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="py-5" id="contact">
   <div class="container">
-    <!-- Page Header -->
+    <!-- Page Header for Contact Us -->
     <div class="text-center mb-5">
       <h1 class="fw-bold text-dark">Contact Us</h1>
-      <p class="lead text-muted"style="color: black; font-size: 22px; font-weight: 600;">We’d love to hear from you! Get in touch with us using the form below or reach out directly.</p>
+      <p class="lead text-muted" style="color: black; font-size: 22px; font-weight: 600;">
+        We’d love to hear from you! Get in touch with us using the form below or reach out directly.
+      </p>
     </div>
 
     <div class="row g-4">
@@ -17,28 +72,24 @@ Contact Us
         <div class="card border-0 shadow-sm">
           <div class="card-body">
             <h5 class="card-title mb-4">Send Us a Message</h5>
-            <form>
+            <form method="POST" action="{{ url_for('contact') }}">
               <div class="mb-3">
-                <label for="name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                  <label for="name" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
               </div>
               <div class="mb-3">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email address" required>
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
               </div>
               <div class="mb-3">
-                <label for="message" class="form-label">Your Message</label>
-                <textarea class="form-control" id="message" rows="4" placeholder="Type your message here" required></textarea>
+                  <label for="message" class="form-label">Your Message</label>
+                  <textarea class="form-control" id="message" name="message" rows="4" placeholder="Type your message here" required></textarea>
               </div>
-              <button type="submit" class="btn w-100 text-white" 
-        style="background: linear-gradient(90deg, #005c97, #363795); 
-               border: none; 
-               border-radius: 8px; 
-               transition: all 0.3s ease;">
-  Send Message
-</button>
-
-            </form>
+              <button type="submit" class="btn w-100 text-white" style="background: linear-gradient(90deg, #005c97, #363795); border: none; border-radius: 8px; transition: all 0.3s ease;">
+                  Send Message
+              </button>
+          </form>
+          
           </div>
         </div>
       </div>
@@ -68,10 +119,10 @@ Contact Us
             </ul>
             <h6 class="mt-4">Find Us On:</h6>
             <div class="d-flex">
-              <a href="#" class="text-light me-3"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-light"><i class="fab fa-linkedin"></i></a>
+              <a href="#" class="me-3 text-muted"><i class="bi bi-facebook fs-4"></i></a>
+              <a href="#" class="me-3 text-muted"><i class="bi bi-twitter fs-4"></i></a>
+              <a href="#" class="me-3 text-muted"><i class="bi bi-linkedin fs-4"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-instagram fs-4"></i></a>
             </div>
           </div>
         </div>
@@ -87,3 +138,5 @@ Contact Us
   </div>
 </section>
 {% endblock %}
+
+
