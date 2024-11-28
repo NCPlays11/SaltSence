@@ -1,43 +1,31 @@
 {% extends 'base.html' %}
-    {% block title %}Charts for {{ region }}{% endblock %}
+{% block title %}Charts for {{ region }} {% endblock %}
 {% block content %}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        h1 {
-            text-align: center;
-            background-color: #0056b3;
-            color: white;
-            padding: 20px 0;
-            margin: 0;
-        }
+<style>
+    #chartsContainer {
+        display: flex;
+        flex-direction: column; /* Makes items stack vertically */
+        gap: 20px;
+        padding: 20px;
+        max-width: 800px; /* Optimized for laptop screen */
+        margin: 0 auto;
+    }
+
+    canvas {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        max-width: 100%; /* Makes charts responsive */
+    }
+
+    @media (min-width: 1024px) {
         #chartsContainer {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1200px; /* Adjusted for larger screens */
         }
-        canvas {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 10px;
-        }
-        @media (max-width: 768px) {
-            canvas {
-                width: 100%;
-                height: auto;
-            }
-        }
-    </style>
+    }
+</style>
+
 <body>
     <h1>Charts for {{ region }}</h1>
     <div id="chartsContainer">
