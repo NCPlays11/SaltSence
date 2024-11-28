@@ -1,68 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charts for {{ region }}</title>
+{% extends 'base.html' %}
+    {% block title %}Charts for {{ region }}{% endblock %}
+{% block content %}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+            margin: 0;
+        }
+        #chartsContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        canvas {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+        }
+        @media (max-width: 768px) {
+            canvas {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
 <body>
     <h1>Charts for {{ region }}</h1>
     <div id="chartsContainer">
         {% for variable in ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"] %}
-            <canvas id="{{ variable }}" width="800" height="400"></canvas>
+            <canvas id="{{ variable }}" width="400" height="400"></canvas>
         {% endfor %}
     </div>
 
     <script>
         const data = {{ data|tojson|safe }};
-    
-            const variables = ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"];
-            const labels = data.map(item => item.Year);
-    
-            variables.forEach(variable => {
-                const ctx = document.getElementById(variable).getContext('2d');
-                const chartData = data.map(item => item[variable]);
-    
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: [
-                            {
-                                label: variable.replace(/_/g, ' '),
-                                data: chartData,
-                                borderColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 1)`,
-                                backgroundColor: 'rgba(0, 0, 0, 0.1)',
-                                fill: false,
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: variable.replace(/_/g, ' ')
+        const variables = ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"];
+        const labels = data.map(item => item.Year);
+
+        variables.forEach(variable => {
+            const ctx = document.getElementById(variable).getContext('2d');
+            const chartData = data.map(item => item[variable]);
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: variable.replace(/_/g, ' '),
+                            data: chartData,
+                            borderColor: `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 1)`,
+                            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                            fill: true,
+                            tension: 0.4, /* Makes lines smoother */
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: variable.replace(/_/g, ' '),
+                            font: {
+                                size: 16,
+                                weight: 'bold',
                             }
                         },
-                        scales: {
-                            x: {
-                                title: {
-                                    display: true,
-                                    text: 'Year'
+                        legend: {
+                            display: true,
+                            labels: {
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: '#0056b3',
+                            titleColor: 'white',
+                            bodyColor: 'white'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Year',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold',
                                 }
                             },
-                            y: {
-                                title: {
-                                    display: true,
-                                    text: variable.replace(/_/g, ' ')
+                            ticks: {
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: variable.replace(/_/g, ' '),
+                                font: {
+                                    size: 14,
+                                    weight: 'bold',
+                                }
+                            },
+                            ticks: {
+                                font: {
+                                    size: 12
                                 }
                             }
                         }
                     }
-                });
+                }
             });
+        });
     </script>    
 </body>
-</html>
+{% endblock %}
