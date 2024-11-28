@@ -6,7 +6,7 @@
     /* Swiper container styling */
     .swiper-container {
         width: 100%;
-        max-width: 800px;
+        max-width: 1000px; /* Wider container for larger charts */
         margin: 0 auto;
     }
 
@@ -19,15 +19,26 @@
 
     canvas {
         background: white;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        padding: 10px;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        padding: 20px;
         max-width: 100%;
+        width: 700px; /* Set a fixed width for larger charts */
+        height: 500px; /* Set a fixed height for larger charts */
     }
 
     h1 {
         text-align: center;
         margin-bottom: 20px;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: #0056b3;
+    }
+
+    .swiper-pagination-bullet {
+        background: #0056b3;
     }
 </style>
 
@@ -39,7 +50,7 @@
             <div class="swiper-wrapper">
                 {% for variable in ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"] %}
                     <div class="swiper-slide">
-                        <canvas id="{{ variable }}" width="400" height="400"></canvas>
+                        <canvas id="{{ variable }}" width="700" height="500"></canvas>
                     </div>
                 {% endfor %}
             </div>
@@ -68,11 +79,11 @@
             },
             breakpoints: {
                 768: {
-                    slidesPerView: 2,
+                    slidesPerView: 1,
                     spaceBetween: 30,
                 },
                 1024: {
-                    slidesPerView: 3,
+                    slidesPerView: 1,
                     spaceBetween: 40,
                 },
             },
@@ -109,7 +120,7 @@
                             display: true,
                             text: variable.replace(/_/g, ' '),
                             font: {
-                                size: 16,
+                                size: 20,
                                 weight: 'bold',
                             }
                         },
@@ -117,7 +128,7 @@
                             display: true,
                             labels: {
                                 font: {
-                                    size: 12
+                                    size: 14
                                 }
                             }
                         },
@@ -135,13 +146,13 @@
                                 display: true,
                                 text: 'Year',
                                 font: {
-                                    size: 14,
+                                    size: 16,
                                     weight: 'bold',
                                 }
                             },
                             ticks: {
                                 font: {
-                                    size: 12
+                                    size: 14
                                 }
                             }
                         },
@@ -150,13 +161,13 @@
                                 display: true,
                                 text: variable.replace(/_/g, ' '),
                                 font: {
-                                    size: 14,
+                                    size: 16,
                                     weight: 'bold',
                                 }
                             },
                             ticks: {
                                 font: {
-                                    size: 12
+                                    size: 14
                                 }
                             }
                         }
