@@ -4,20 +4,25 @@
 
 {% block content %}
 <!-- Background Image and Overlay -->
-<div class="bg-image text-white" style="background-image: url('/static/images/desalination-bg.jpg'); background-size: cover; padding: 20px 0;">
+<div class="bg-image text-white" style="padding: 20px 0;">
     <div class="container my-4">
         <h1 class="text-center mb-4">Learn About Desalination</h1>
         <!-- Chart -->
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h1 style="color: black;">Select a Region</h1>
-                    {% for region in regions %}
-                        <button style="color: black;"><a href="{{ url_for('region_charts', region_name=region) }}">{{ region }}</a></button>
-                    {% endfor %}
-                </div>
+        <div class="container my-5">
+    <h2 class="text-center mb-4">Select a Region</h2>
+    <div class="card shadow-sm border-0">
+        <div class="card-body text-center">
+            <h5 class="card-title text-primary mb-3"><i class="fas fa-globe"></i> Explore Regions</h5>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                {% for region in regions %}
+                <a href="{{ url_for('region_charts', region_name=region) }}" class="btn btn-outline-primary btn-lg">
+                    {{ region }}
+                </a>
+                {% endfor %}
             </div>
         </div>
+    </div>
+</div>
         <script src="/static/js/charts.js"></script>
         <!-- Info Cards Section -->
         <div class="row">
@@ -158,7 +163,10 @@
         <div class="text-center my-5">
             <h4>Want to Dive Deeper Into Water Technologies?</h4>
             <p>Join our newsletter to stay updated on the latest innovations in desalination and water purification.</p>
-            <a href="/subscribe" class="btn btn-primary btn-lg"><i class="fas fa-envelope"></i> Subscribe Now</a>
+            <form action="{{url_for('subscribe')}}" method="post" class="d-flex">
+                    <input type="email" class="form-control me-2 bg-light text-dark border-secondary" name = "email" placeholder="Your Email" required>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-envelope"></i>Subscribe Now</button>
+                </form>
         </div>
 
         <!-- Quiz Button -->
@@ -167,4 +175,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}
