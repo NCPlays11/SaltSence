@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% block title %}Desalination Charts for {{ region }} {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<style>
+    /* Swiper container styling */
+    .swiper-container {
+        width: 100%;
+        max-width: 1000px; /* Wider container for larger charts */
+        margin: 0 auto;
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    canvas {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        max-width: 100%;
+        width: 700px; /* Set a fixed width for larger charts */
+        height: 500px; /* Set a fixed height for larger charts */
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: #0056b3;
+    }
+
+    .swiper-pagination-bullet {
+        background: #0056b3;
+    }
+</style>
+
+<body>
+    <div class="container my-4">
+        <h1 class="text-center mb-4">Charts for {{ region }}</h1>
+        <!-- Swiper Container -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {% for variable in ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"] %}
+                    <div class="swiper-slide">
+                        <canvas id="{{ variable }}" width="700" height="500"></canvas>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- Swiper Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Swiper Navigation Buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 1,
+                    spaceBetween: 40,
+                },
+            },
+        });
+
+        // Chart Data
+        const data = {{ data|tojson|safe }};
+        const variables = ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"];
+        const labels = data.map(item => item.Year);
+
+        variables.forEach(variable => {
+            const ctx = document.getElementById(variable).getContext('2d');
+            const chartData = data.map(item => item[variable]);
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: variable.replace(/_/g, ' '),
+                            data: chartData,
+                            borderColor: `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 1)`,
+                            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                            fill: true,
+                            tension: 0.4, /* Makes lines smoother */
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: variable.replace(/_/g, ' '),
+                            font: {
+                                size: 20,
+                                weight: 'bold',
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            labels: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: '#0056b3',
+                            titleColor: 'white',
+                            bodyColor: 'white'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Year',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold',
+                                }
+                            },
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: variable.replace(/_/g, ' '),
+                                font: {
+                                    size: 16,
+                                    weight: 'bold',
+                                }
+                            },
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+{% endblock %}

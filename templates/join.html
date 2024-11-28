@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Join the Movement{% endblock %}
+
+{% block content %}
+<section class="py-5" id="join">
+    <div class="container">
+        <!-- Section Heading for Join the Movement -->
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-dark">Join the Movement</h1>
+            <p class="lead text-muted" style="color: black; font-size: 22px; font-weight: 600;">Creating better opportunities for desalination by sharing ideas across the globe.</p>
+        </div>
+
+        <!-- Idea Submission Form -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Submit Your Idea</h5>
+                        <form method="POST" action="{{ url_for('contact') }}">
+                            <!-- Full Name -->
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+                            </div>
+                            <!-- Email Address -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
+                            </div>
+                            <!-- Idea Description -->
+                            <div class="mb-3">
+                                <label for="idea" class="form-label">Your Idea</label>
+                                <textarea class="form-control" id="idea" name="idea" rows="4" placeholder="Share your ideas about combating desalination" required></textarea>
+                            </div>
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn w-100 text-white" style="background: linear-gradient(90deg, #005c97, #363795); border: none; border-radius: 8px; transition: all 0.3s ease;">
+                                Submit Idea
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Message -->
+        {% if message %}
+        <div class="alert alert-success mt-4">
+            <strong>Success!</strong> Your idea has been submitted. Thank you for your contribution to combating desalination.
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

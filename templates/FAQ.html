@@ -1,248 +1,185 @@
-<!DOCTYPE html>
-<html style="font-size: 16px;" lang="en"><head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <title>FAQ</title>
-    <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="FAQ.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 7.0.3, nicepage.com">
-    <meta name="referrer" content="origin">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-    
-    
-    
-    <script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"name": "SaltSence",
-		"sameAs": [
-				"facebook.com",
-				"x.com",
-				"instagram.com",
-				"linkedin.com"
-		]
-}</script>
-    <meta name="theme-color" content="#478ac9">
-    <meta property="og:title" content="FAQ">
-    <meta property="og:description" content="">
-    <meta property="og:type" content="website">
-  <script>
-    function gdprConfirmed() {
-        return true;
-    }
-    function dynamicLoadScript(src) {
-        var script = document.createElement('script');
-        script.src = src && typeof src === 'string' ? src : 'https://www.google.com/recaptcha/api.js?render=6LcsxW0qAAAAADKkjmbqqXQknV3Jue-UKFkwXaCE';
-        script.async = true;
-        document.body.appendChild(script);
-        script.onload = function() {
-            let event = new CustomEvent("recaptchaLoaded");
-            document.dispatchEvent(event);
-        };
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-        var confirmButton = document.querySelector('.u-cookies-consent .u-button-confirm');
-        if (confirmButton) {
-            confirmButton.onclick = dynamicLoadScript;
-        }
-    });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function(){
-            if (!gdprConfirmed()) {
-                return;
-            }
-            dynamicLoadScript();
-        });
-    </script>
-    <script>
-        document.addEventListener("recaptchaLoaded", function() {
-            if (!gdprConfirmed()) {
-                return;
-            }
-            (function (grecaptcha, sitekey, actions) {
-                var recaptcha = {
-                    execute: function (action, submitFormCb) {
-                        try {
-                            grecaptcha.execute(
-                                sitekey,
-                                {action: action}
-                            ).then(function (token) {
-                                var forms = document.getElementsByTagName('form');
+{% extends "base.html" %}
+{% block title %}
+FAQ
+{% endblock %}
+{% block content %}
+<section class="py-5" id="faq">
+  <div class="container">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+      <h1 class="fw-bold text-dark">Frequently Asked Questions</h1>
+      <p class="lead text-muted"style="color: black; font-size: 22px; font-weight: 600;">Find answers to the most common questions about our services, mission, and impact.</p>
+    </div>
 
-                                for (var i = 0; i < forms.length; i++) {
-                                    var fields = forms[i].getElementsByTagName('input');
-
-                                    for (var j = 0; j < fields.length; j++) {
-                                        var field = fields[j];
-
-                                        if ('recaptchaResponse' === field.getAttribute('name')) {
-                                            field.setAttribute('value', token);
-                                            break;
-                                        }
-                                    }
-                                }
-                                submitFormCb();
-                            });
-                        } catch (e) {
-                            var formError = document.querySelector('.u-form-send-error');
-
-                            if (formError) {
-                                formError.innerText = 'Site Owner Error: ' + e.message.replace(/:[\s\S]*/, '');
-                                formError.style.display = 'block';
-                            }
-                        }
-                    },
-
-                    executeContact: function (submitFormCb) {
-                        recaptcha.execute(actions['contact'], submitFormCb);
-                    }
-                };
-
-                window.recaptchaObject = recaptcha;
-            })(
-                grecaptcha,
-                
-                '6LcsxW0qAAAAADKkjmbqqXQknV3Jue-UKFkwXaCE',
-                {'contact': 'contact'}
-            );
-        });
-    </script>
-<meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
-  <body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-grey-80 u-header" id="sec-11dc" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction=""><div class="u-clearfix u-sheet u-sheet-1">
-        <img class="u-image u-image-default u-image-1" src="images/imageedit_18_8691558084.png" alt="" data-image-width="657" data-image-height="663">
-        <h2 class="u-text u-text-body-alt-color u-text-default u-text-1">SaltSense </h2>
-        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
-          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
-            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-hamburger-link u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
-              <svg class="u-svg-link" viewBox="0 0 24 24"><use xlink:href="#menu-hamburger"></use></svg>
-              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
-</g></svg>
-            </a>
+    <!-- FAQ Section -->
+    <div class="accordion" id="faqAccordion">
+      <!-- Question 1 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseOne"
+            aria-expanded="true"
+            aria-controls="collapseOne">
+            What is SaltSense?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            SaltSense is an initiative focused on making desalination sustainable by reducing environmental impacts and promoting innovative technologies.
           </div>
-          <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="./" style="padding: 10px 20px;">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Desalinization.html" style="padding: 10px 20px;">Desalinization</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="About.html" style="padding: 10px 20px;">About</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Data-and-Statistics.html" style="padding: 10px 20px;">Data &amp; Statistics</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="FAQ.html" style="padding: 10px 20px;">FAQ</a>
-</li></ul>
-          </div>
-          <div class="u-custom-menu u-nav-container-collapse">
-            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-              <div class="u-inner-container-layout u-sidenav-overflow">
-                <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Desalinization.html">Desalinization</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">About</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Data-and-Statistics.html">Data &amp; Statistics</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="FAQ.html">FAQ</a>
-</li></ul>
-              </div>
-            </div>
-            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-          </div>
-        </nav>
-      </div></header>
-    <section class="u-clearfix u-palette-1-base u-section-1" id="sec-cfa4">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <h3 class="u-align-center u-text u-text-default u-text-1">How can I help the ocean outside of desalinization?</h3>
-        <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
-          <div class="u-layout">
-            <div class="u-layout-row">
-              <div class="u-size-30">
-                <div class="u-layout-col">
-                  <div class="u-container-style u-layout-cell u-size-60 u-white u-layout-cell-1">
-                    <div class="u-container-layout u-container-layout-1">
-                      <p class="u-align-center u-text u-text-default u-text-2">Even outside of the problem of desalinization there are still many things you can do to make Earth's oceans and seas a better place. As humans have industrialized, we create more and more trash that we can't get rid of. Trash is normally put into landfills, but sometimes trash escapes from the landfills and into bodies of water, polluting the Earth. This is why, you, can make a difference no matter where you are. These are just some of the things you can do to make marine life a better place.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="u-size-30">
-                <div class="u-layout-col">
-                  <div class="u-container-style u-layout-cell u-size-30 u-white u-layout-cell-2">
-                    <div class="u-container-layout u-container-layout-2">
-                      <h6 class="u-align-center u-text u-text-3">Reduce Plastic<br>
-                        <br>Conserve Water<br>
-                        <br> Participate in Beach Cleanups
-                      </h6>
-                    </div>
-                  </div>
-                  <div class="u-container-style u-layout-cell u-size-30 u-white u-layout-cell-3">
-                    <div class="u-container-layout u-container-layout-3">
-                      <p class="u-align-center u-text u-text-default u-text-4">Each of these actions will reduce your impact on marine life. By reducing your plastic use you prevent a chance of that trash traveling to the ocean. Conserving water reduces the amount of water being desalinated from the ocean. And participating in beach cleanups helps you clean trash that has already made its way to the ocean.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <h3 class="u-align-center u-text u-text-default u-text-5">If you have any more questions, feel free to contact us through the email form. Please note: Spam emails will be blocked.</h3>
-        <div class="u-expanded-width u-form u-form-1">
-          <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form" style="padding: 10px;">
-            <div class="u-form-group u-form-name u-form-partition-factor-2 u-label-top u-form-group-1">
-              <label for="name-650d" class="u-label">First Name</label>
-              <input type="text" placeholder="Enter your First Name" id="name-650d" name="name-1" class="u-input u-input-rectangle" required="">
-            </div>
-            <div class="u-form-group u-form-name u-form-partition-factor-2 u-label-top u-form-group-2">
-              <label for="name-650d" class="u-label">Last Name</label>
-              <input type="text" placeholder="Enter your Last Name" id="name-650d" name="name-2" class="u-input u-input-rectangle" required="">
-            </div>
-            <div class="u-form-email u-form-group u-label-top">
-              <label for="email-7a2d" class="u-label">Email</label>
-              <input type="email" placeholder="Enter a valid email address" id="email-7a2d" name="email" class="u-input u-input-rectangle" required="">
-            </div>
-            <div class="u-form-group u-form-message u-label-top">
-              <label for="message-7a2d" class="u-label">Question</label>
-              <textarea placeholder="​Enter your question" rows="4" cols="50" id="message-7a2d" name="question" class="u-input u-input-rectangle" required=""></textarea>
-            </div>
-            <div class="u-align-center u-form-group u-form-submit u-label-top">
-              <input type="submit" value="submit" class="u-form-control-hidden">
-              <a href="#" class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-black u-text-hover-palette-1-base u-btn-1">Submit</a>
-            </div>
-            <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-            <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
-            <input type="hidden" value="" name="recaptchaResponse">
-            <input type="hidden" name="formServices" value="866a6f43-b136-4bcf-76af-ecd946442c28">
-            <input type="hidden" name="siteKey" value="6LcsxW0qAAAAADKkjmbqqXQknV3Jue-UKFkwXaCE">
-          </form>
         </div>
       </div>
-    </section>
-    
-    
-    
-    <footer class="u-clearfix u-footer u-grey-80" id="sec-fdcb"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <div class="u-align-left u-social-icons u-spacing-10 u-social-icons-1">
-          <a class="u-social-url" title="facebook" target="_blank" href="facebook.com"><span class="u-icon u-social-facebook u-social-icon u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" style=""><use xlink:href="#svg-8806"></use></svg><svg class="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-8806"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path fill="#FFFFFF" d="M73.5,31.6h-9.1c-1.4,0-3.6,0.8-3.6,3.9v8.5h12.6L72,58.3H60.8v40.8H43.9V58.3h-8V43.9h8v-9.2
-      c0-6.7,3.1-17,17-17h12.5v13.9H73.5z"></path></svg></span>
-          </a>
-          <a class="u-social-url" title="twitter" target="_blank" href="x.com"><span class="u-file-icon u-icon u-social-icon u-social-twitter u-icon-2"><img src="images/11823292.png" alt=""></span>
-          </a>
-          <a class="u-social-url" title="instagram" target="_blank" href="instagram.com"><span class="u-icon u-social-icon u-social-instagram u-icon-3"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" style=""><use xlink:href="#svg-ad8a"></use></svg><svg class="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-ad8a"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path fill="#FFFFFF" d="M55.9,38.2c-9.9,0-17.9,8-17.9,17.9C38,66,46,74,55.9,74c9.9,0,17.9-8,17.9-17.9C73.8,46.2,65.8,38.2,55.9,38.2
-      z M55.9,66.4c-5.7,0-10.3-4.6-10.3-10.3c-0.1-5.7,4.6-10.3,10.3-10.3c5.7,0,10.3,4.6,10.3,10.3C66.2,61.8,61.6,66.4,55.9,66.4z"></path><path fill="#FFFFFF" d="M74.3,33.5c-2.3,0-4.2,1.9-4.2,4.2s1.9,4.2,4.2,4.2s4.2-1.9,4.2-4.2S76.6,33.5,74.3,33.5z"></path><path fill="#FFFFFF" d="M73.1,21.3H38.6c-9.7,0-17.5,7.9-17.5,17.5v34.5c0,9.7,7.9,17.6,17.5,17.6h34.5c9.7,0,17.5-7.9,17.5-17.5V38.8
-      C90.6,29.1,82.7,21.3,73.1,21.3z M83,73.3c0,5.5-4.5,9.9-9.9,9.9H38.6c-5.5,0-9.9-4.5-9.9-9.9V38.8c0-5.5,4.5-9.9,9.9-9.9h34.5
-      c5.5,0,9.9,4.5,9.9,9.9V73.3z"></path></svg></span>
-          </a>
-          <a class="u-social-url" title="linkedin" target="_blank" href="linkedin.com"><span class="u-icon u-social-icon u-social-linkedin u-icon-4"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" style=""><use xlink:href="#svg-a222"></use></svg><svg class="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-a222"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path fill="#FFFFFF" d="M41.3,83.7H27.9V43.4h13.4V83.7z M34.6,37.9L34.6,37.9c-4.6,0-7.5-3.1-7.5-7c0-4,3-7,7.6-7s7.4,3,7.5,7
-      C42.2,34.8,39.2,37.9,34.6,37.9z M89.6,83.7H76.2V62.2c0-5.4-1.9-9.1-6.8-9.1c-3.7,0-5.9,2.5-6.9,4.9c-0.4,0.9-0.4,2.1-0.4,3.3v22.5
-      H48.7c0,0,0.2-36.5,0-40.3h13.4v5.7c1.8-2.7,5-6.7,12.1-6.7c8.8,0,15.4,5.8,15.4,18.1V83.7z"></path></svg></span>
-          </a>
+
+      <!-- Question 2 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo"
+            aria-expanded="false"
+            aria-controls="collapseTwo">
+            How can I get involved with SaltSense?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            You can get involved by joining our educational programs, collaborating on projects, or contributing to our research initiatives. Visit the "Get Involved" section for more information.
+          </div>
         </div>
-      </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <p class="u-text">
-        <span>This site was created with the </span>
-        <a class="u-link" href="https://nicepage.com/" target="_blank" rel="nofollow">
-          <span>Nicepage</span>
-        </a>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseThree"
+            aria-expanded="false"
+            aria-controls="collapseThree">
+            What are the main goals of SaltSense?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Our main goals include advancing sustainable desalination practices, reducing brine waste, and protecting marine ecosystems while addressing global water scarcity.
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseFour"
+            aria-expanded="false"
+            aria-controls="collapseFour">
+            Does SaltSense collaborate with other organizations?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, we collaborate with scientists, engineers, policymakers, and international organizations to promote eco-friendly desalination and drive global sustainability initiatives.
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFive">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseFive"
+            aria-expanded="false"
+            aria-controls="collapseFive">
+            How can I learn more about SaltSense's projects?
+          </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Visit our "Projects" section to explore ongoing and completed initiatives, or follow us on social media for updates and news.
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Questions -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSix">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseSix"
+            aria-expanded="false"
+            aria-controls="collapseSix">
+            Is desalination sustainable?
+          </button>
+        </h2>
+        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            While desalination provides a critical solution to water scarcity, its sustainability depends on innovative practices that reduce energy consumption and minimize the impact of brine waste.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSeven">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseSeven"
+            aria-expanded="false"
+            aria-controls="collapseSeven">
+            Does SaltSense offer educational resources?
+          </button>
+        </h2>
+        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, we offer workshops, webinars, and downloadable guides to help individuals and organizations understand and adopt sustainable desalination practices.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingEight">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseEight"
+            aria-expanded="false"
+            aria-controls="collapseEight">
+            How can I support SaltSense's mission?
+          </button>
+        </h2>
+        <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            You can support us by donating, spreading awareness, volunteering your skills, or joining our programs. Every contribution makes a difference!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="mt-5 text-center">
+      <h2 class="fw-bold">Still Have Questions?</h2>
+      <p class="text"style="color: white; font-size: 22px; font-weight: 600;">
+        Reach out to us directly, and we'll be happy to help.
       </p>
-    </section>
-  
-</body></html>
+      <a href="{{ url_for('contact') }}" class="btn btn-success">Contact Us</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

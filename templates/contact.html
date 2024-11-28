@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}
+Contact Us
+{% endblock %}
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+      <h1 class="fw-bold text-dark">Contact Us</h1>
+      <p class="lead text-muted"style="color: black; font-size: 22px; font-weight: 600;">We’d love to hear from you! Get in touch with us using the form below or reach out directly.</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Contact Form -->
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-4">Send Us a Message</h5>
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email address" required>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Your Message</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="Type your message here" required></textarea>
+              </div>
+              <button type="submit" class="btn w-100 text-white" 
+        style="background: linear-gradient(90deg, #005c97, #363795); 
+               border: none; 
+               border-radius: 8px; 
+               transition: all 0.3s ease;">
+  Send Message
+</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Details & Map -->
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-4">Contact Details</h5>
+            <ul class="list-unstyled">
+              <li class="mb-3">
+                <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                <strong>Address:</strong> SaltSense
+              </li>
+              <li class="mb-3">
+                <i class="bi bi-telephone-fill text-primary me-2"></i>
+                <strong>Phone:</strong> +123 456 7890
+              </li>
+              <li class="mb-3">
+                <i class="bi bi-envelope-fill text-primary me-2"></i>
+                <strong>Email:</strong> contact@saltSense.org
+              </li>
+              <li>
+                <i class="bi bi-clock-fill text-primary me-2"></i>
+                <strong>Hours:</strong> Mon - Fri, 9 AM - 5 PM
+              </li>
+            </ul>
+            <h6 class="mt-4">Find Us On:</h6>
+            <div class="d-flex">
+              <a href="#" class="me-3 text-muted"><i class="bi bi-facebook fs-4"></i></a>
+              <a href="#" class="me-3 text-muted"><i class="bi bi-twitter fs-4"></i></a>
+              <a href="#" class="me-3 text-muted"><i class="bi bi-linkedin fs-4"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-instagram fs-4"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="mt-4">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345096074!2d144.9537353153167!3d-37.81627944201096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5772aa7b75a2d58!2sVictoria!5e0!3m2!1sen!2sau!4v1635764102572!5m2!1sen!2sau"
+            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
