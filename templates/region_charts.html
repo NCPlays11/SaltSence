@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
 {% block title %}Desalination Charts for {{ region }} {% endblock %}
 {% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 <style>
-    #chartsContainer {
-        display: flex;
-        flex-direction: grid; /* Makes items stack vertically */
-        gap: 20px;
-        padding: 20px;
-        max-width: 800px; /* Optimized for laptop screen */
+    /* Swiper container styling */
+    .swiper-container {
+        width: 100%;
+        max-width: 800px;
         margin: 0 auto;
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 
     canvas {
@@ -16,23 +22,63 @@
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         padding: 10px;
-        max-width: 100%; /* Makes charts responsive */
-        height: 50px;
+        max-width: 100%;
     }
 
-   
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 </style>
 
 <body>
-     <div class="container my-4">
-    <h1 class="text-center mb-4">Charts for {{ region }}</h1>
-    <div id="chartsContainer">
-        {% for variable in ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"] %}
-            <canvas id="{{ variable }}" width="400" height="400"></canvas>
-        {% endfor %}
+    <div class="container my-4">
+        <h1 class="text-center mb-4">Charts for {{ region }}</h1>
+        <!-- Swiper Container -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {% for variable in ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"] %}
+                    <div class="swiper-slide">
+                        <canvas id="{{ variable }}" width="400" height="400"></canvas>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- Swiper Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Swiper Navigation Buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
     </div>
-     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+            },
+        });
+
+        // Chart Data
         const data = {{ data|tojson|safe }};
         const variables = ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"];
         const labels = data.map(item => item.Year);
@@ -118,6 +164,6 @@
                 }
             });
         });
-    </script>    
+    </script>
 </body>
 {% endblock %}
