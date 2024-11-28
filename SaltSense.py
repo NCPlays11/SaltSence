@@ -31,7 +31,9 @@ def quiz():
 def learn():
     return render_template("learn.html", regions=["Middle East", "North America", "Asia Pacific", "Europe", "Africa"])
 
-
+@app.route("/join")
+def join():
+    return render_template("join.html")
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
