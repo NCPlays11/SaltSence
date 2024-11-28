@@ -23,13 +23,14 @@
 </style>
 
 <body>
-    <h1>Charts for {{ region }}</h1>
+     <div class="container my-4">
+    <h1 class="text-center mb-4">Charts for {{ region }}</h1>
     <div id="chartsContainer">
         {% for variable in ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"] %}
             <canvas id="{{ variable }}" width="400" height="400"></canvas>
         {% endfor %}
     </div>
-
+     </div>
     <script>
         const data = {{ data|tojson|safe }};
         const variables = ["Desalinated_Water_Produced_Million_m3", "Energy_Consumption_kWh_per_m3", "Brine_Discharge_Million_m3", "Marine_Impact_Index", "Cost_USD_per_m3"];
