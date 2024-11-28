@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}Charts for {{ region }} {% endblock %}
+{% block title %}Desalination Charts for {{ region }} {% endblock %}
 {% block content %}
 <style>
     #chartsContainer {
         display: flex;
-        flex-direction: column; /* Makes items stack vertically */
+        flex-direction: grid; /* Makes items stack vertically */
         gap: 20px;
         padding: 20px;
         max-width: 800px; /* Optimized for laptop screen */
@@ -17,7 +17,7 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         padding: 10px;
         max-width: 100%; /* Makes charts responsive */
-        height: 80px;
+        height: 50px;
     }
 
    
