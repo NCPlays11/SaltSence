@@ -3,10 +3,11 @@ import pandas as pd
 import os
 import csv
 from functools import wraps
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
-app.secret_key = os.environ.get("SECRETKEY")
+app.secret_key = os.getenv("SECRETKEY")
 
 file_path = os.path.join(app.root_path, "static", "desalination_data.csv")
 df = pd.read_csv(file_path)
