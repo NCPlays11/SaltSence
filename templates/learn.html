@@ -6,10 +6,10 @@
 <!-- Background Image and Overlay -->
 <div class="bg-image text-white" style="padding: 20px 0;">
     <div class="container my-4">
-        <h1 class="text-center mb-4">Learn About Desalination</h1>
+        <h1 class="text-center mb-4" style="color: black;">Learn About Desalination</h1>
         <!-- Chart -->
         <div class="container my-5">
-    <h2 class="text-center mb-4">Select a Region</h2>
+    <h2 class="text-center mb-4" style="color: black;">Select a Region</h2>
     <div class="card shadow-sm border-0">
         <div class="card-body text-center">
             <h5 class="card-title text-primary mb-3"><i class="fas fa-globe"></i> Explore Regions</h5>
@@ -105,7 +105,7 @@
 
         <!-- Infographic-Style Progress Bars Section -->
         <div class="my-4">
-            <h3 class="text-center">Desalination Statistics</h3>
+            <h3 class="text-center" style="color: black;">Desalination Statistics</h3>
             <div class="mb-3">
                 <h5>Global Freshwater Supply from Desalination</h5>
                 <div class="progress">
@@ -161,11 +161,11 @@
 
         <!-- Call-to-Action Section -->
         <div class="text-center my-5">
-            <h4>Want to Dive Deeper Into Water Technologies?</h4>
-            <p>Join our newsletter to stay updated on the latest innovations in desalination and water purification.</p>
+            <h4 style="color: black;">Want to Dive Deeper Into Water Technologies?</h4>
+            <p style="color: black;">Join our newsletter to stay updated on the latest innovations in desalination and water purification.</p>
             <form action="{{url_for('subscribe')}}" method="post" class="d-flex">
-                    <input type="email" class="form-control me-2 bg-light text-dark border-secondary" name = "email" placeholder="Your Email" required>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-envelope"></i>Subscribe Now</button>
+                    <input type="email" class="form-control me-2 bg-light text-dark border-secondary" name = "email" placeholder="Your Email" style="width: 115vh;" required>
+                    <button type="submit" class="btn btn-primary" style="width: 16vh;"><i class="fas fa-envelope"></i> Subscribe</button>
                 </form>
         </div>
 
