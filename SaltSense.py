@@ -2,14 +2,29 @@ from flask import Flask, render_template, jsonify, redirect, flash, request, url
 import pandas as pd
 import os
 import csv
+from functools import wraps
 
 app = Flask(__name__)
 
-# app.secret_key = os.urandom(64)
+app.secret_key = os.environ.get("SECRETKEY")
 
-app.secret_key = 'FTYUJLGTCKJHBVijufewnjv832ur5456e4w58hvb4o5'
 file_path = os.path.join(app.root_path, "static", "desalination_data.csv")
 df = pd.read_csv(file_path)
+
+def server_only(f):
+    def wrapper(*args, **kwargs):
+        flash("This page is restricted...", "danger")
+        return redirect(url_for('home'))
+    wrapper.__name__ = f.__name__
+    return wrapper
+
+def value_in_csv(file_path, value, column_name):
+    with open(file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            if row[column_name] == value:
+                return True
+    return False
 
 @app.route("/")
 def home():
@@ -39,23 +54,21 @@ def join():
 def contact():
     if request.method == "POST":
         CSV_FILE = os.path.join(app.root_path, "static", "contact.csv")
-        # Get the form data
+        # Form data
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
         
-        # Ensure that the email and message are provided
         if name and email and message:
-            # Ensure the CSV file exists and has the appropriate headers
             if not os.path.exists(CSV_FILE):
                 with open(CSV_FILE, mode='w', newline='', encoding='utf-8') as file:
                     writer = csv.writer(file)
-                    writer.writerow(["Full Name", "Email Address", "Message"])  # Header row
+                    writer.writerow(["Full Name", "Email Address", "Message"])
 
-            # Save the form data to the CSV file
+            # Save data to CSV
             with open(CSV_FILE, mode='a', newline='', encoding='utf-8') as file:
                 writer = csv.writer(file)
-                writer.writerow([name, email, message])  # Append the form data
+                writer.writerow([name, email, message])
 
             # Flash a success message
             flash("Your message has been sent successfully!", "success")
@@ -63,41 +76,52 @@ def contact():
             # Flash an error message if any field is missing
             flash("Please fill out all the fields.", "danger")
         
-        # Redirect back to the contact page
+        # Redirect
         return redirect(url_for("contact"))
     
-    # Render the contact page for GET requests
+    # Render contact page
     return render_template("contact.html")
 
 @app.route("/data")
+@server_only
 def get_data():
     data = df.to_dict(orient="records")
     return jsonify(data)
 
 @app.route('/region/<region_name>')
 def region_charts(region_name):
+    if region_name not in df['Region'].unique().tolist():
+        flash("This is not a valid region", "danger")
+        return redirect(url_for("learn"))
     region_data = df[df['Region'] == region_name].to_dict(orient='records')
     return render_template('region_charts.html', region=region_name, data=region_data)
 
-# Subscribe
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
-    email = request.form.get('email')  
+    email = request.form.get('email')
     if email:
         # Define the file path within the 'static' directory
         file_path = os.path.join(app.root_path, "static", "subscribers.csv")
-        # Save the email to the CSV file
-        with open(file_path, 'a', newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow([email])
-        
-        # Flash a success message
-        flash('You have successfully subscribed!', 'success')
+        # Check if email already exists
+        if value_in_csv(file_path, email, "Email"):
+            flash("You are already subscribed!", "danger")
+        else:
+            # Save the email to the CSV file
+            with open(file_path, 'a', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow([email])
+            
+            # Flash a success message
+            flash('You have successfully subscribed!', 'success')
     else:
         flash('Please provide a valid email address.', 'danger')
     
     return redirect(url_for('home'))
 
+@app.errorhandler(405)
+def method_not_allowed(error):
+    flash("You cannot subscribe that way.", "danger")
+    return redirect(url_for("home"))
 
 @app.errorhandler(404)
 def page_not_found(error):
@@ -105,5 +129,3 @@ def page_not_found(error):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-    

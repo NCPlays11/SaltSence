@@ -2,7 +2,7 @@
 {% block title %} Your Partner in Protecting Marine Ecosystems {% endblock %}
 {% block content %}
 <!-- Hero Section -->
-<div class="hero position-relative" style="background: url('{{ url_for("static", filename="images/hero-1.jpeg") }}');">
+<div class="hero position-relative"style="background: url('{{ url_for("static", filename="images/hero-1.jpeg") }}');">
     <div class="hero-overlay"></div>
     <div class="hero-text text-center">
         <h1 class="display-4 fw-bold text-white">SaltSense</h1>
@@ -13,24 +13,7 @@
 </div>
 
 <!-- About Section -->
-<section class="about py-5"style="background: none;">
-    <div class="container">
-        <div class="card bg-light shadow-lg" style="background: rgba(255, 255, 255, 0.8);">
-            <div class="card-body text-center">
-                <h2 class="mb-4">Why We Care</h2>
-                <p class="lead">
-                    Desalination may provide fresh water, but its consequences are often overlooked. At SaltSense, we believe in
-                    raising awareness about the hidden dangers of desalination, including the damage to marine life, increased
-                    salinity in water bodies, and the release of harmful chemicals into the environment.
-                </p>
-                <a href="{{url_for('learn')}}" class="btn btn-secondary">Discover More</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Our Mission Section -->
-<section class="mission py-5" style="background: none;">
+<section class="mission py-5"style="background: none;">
     <div class="container">
         <div class="card bg-light shadow-lg" style="background: rgba(255, 255, 255, 0.8);">
             <div class="card-body text-center">
@@ -40,6 +23,24 @@
                     protect our oceans and coastal ecosystems. We strive to foster a deeper understanding of the risks
                     associated with desalination and advocate for innovative alternatives.
                 </p>
+                <a href="{{url_for('about')}}" class="btn btn-secondary">Our Cause</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Learn Section -->
+<section class="about py-5" style="background: none;">
+    <div class="container">
+        <div class="card bg-light shadow-lg" style="background: rgba(255, 255, 255, 0.8);">
+            <div class="card-body text-center">
+                <h2 class="mb-4">Why We Care</h2>
+                <p class="lead">
+                    Desalination may provide fresh water, but its consequences are often overlooked. At SaltSense, we believe in
+                    raising awareness about the hidden dangers of desalination, including the damage to marine life, increased
+                    salinity in water bodies, and the release of harmful chemicals into the environment.
+                </p>
+                <a href="{{url_for('learn')}}" class="btn btn-secondary">Learn More</a>
             </div>
         </div>
     </div>
@@ -93,7 +94,7 @@
             <div class="card-body">
                 <h2>Join Us in Making a Difference</h2>
                 <p class="mb-4">Support our efforts to spread awareness and drive positive change for marine environments.</p>
-                <a href="{{url_for('contact')}}" class="btn btn-light btn-lg">Join the Movement</a>
+                <a href="{{url_for('join')}}" class="btn btn-light btn-lg">Join the Movement</a>
             </div>
         </div>
     </div>
@@ -126,7 +127,7 @@
                     <div class="card-body text-center">
                         <i class="fas fa-globe fa-3x text-info mb-3"></i>
                         <h4>Global Collaboration</h4>
-                        <p>We hope to partner with international organizations to promote sustainable water solutions.</p>
+                        <p>We hope to partner with international organizations to promote sustainable water solutions across the globe.</p>
                     </div>
                 </div>
             </div>
