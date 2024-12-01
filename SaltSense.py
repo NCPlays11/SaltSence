@@ -6,7 +6,7 @@ from functools import wraps
 
 app = Flask(__name__)
 
-app.secret_key = os.environ.get("SECRETKEY")
+app.secret_key = 'FTYUJLGTCKJHBVijufewnjv832ur5456e4w58hvb4o5'
 
 file_path = os.path.join(app.root_path, "static", "desalination_data.csv")
 df = pd.read_csv(file_path)
